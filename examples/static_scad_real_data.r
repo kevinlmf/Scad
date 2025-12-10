@@ -19,7 +19,7 @@ suppressPackageStartupMessages({
   library(quantmod)
   library(MASS)
   library(zoo)
-  library(scadLLA)  # ⭐ Use package functions instead of custom implementations
+  library(Scad)  # ⭐ Use package functions instead of custom implementations
   library(glmnet)
 })
 

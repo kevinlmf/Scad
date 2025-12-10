@@ -23,7 +23,7 @@
 # Step 3: Covariance Estimation (||Σ̂ - Σ*||_F)
 # ============================================================================
 
-library(scadLLA)
+library(Scad)
 library(glmnet)
 library(MASS)
 
@@ -39,8 +39,8 @@ if (requireNamespace("Rcpp", quietly = TRUE)) {
     # Try to actually call a function from package namespace (not global env)
     test_beta <- matrix(1:4, 2, 2)
     # Use package namespace explicitly to avoid global env masking
-    if (exists("compute_beta_error_cpp", where = asNamespace("scadLLA"), mode = "function")) {
-      test_result <- get("compute_beta_error_cpp", envir = asNamespace("scadLLA"))(test_beta, test_beta)
+    if (exists("compute_beta_error_cpp", where = asNamespace("Scad"), mode = "function")) {
+      test_result <- get("compute_beta_error_cpp", envir = asNamespace("Scad"))(test_beta, test_beta)
       if (is.finite(test_result)) {
         use_rcpp <- TRUE
         cat("✓ Rcpp 加速版本可用，将使用 C++ 实现（快 5-20 倍）\n\n")
@@ -119,8 +119,8 @@ generate_time_series_data <- function(T_periods, n_per_period, p, rho, rho_eps, 
       func <- NULL
       if (exists("generate_time_series_data_cpp", mode = "function")) {
         func <- generate_time_series_data_cpp
-      } else if (exists("generate_time_series_data_cpp", where = asNamespace("scadLLA"), mode = "function")) {
-        func <- get("generate_time_series_data_cpp", envir = asNamespace("scadLLA"))
+      } else if (exists("generate_time_series_data_cpp", where = asNamespace("Scad"), mode = "function")) {
+        func <- get("generate_time_series_data_cpp", envir = asNamespace("Scad"))
       }
       
       if (!is.null(func)) {
@@ -259,8 +259,8 @@ compute_beta_error <- function(beta_est, beta_true) {
     tryCatch({
       if (exists("compute_beta_error_cpp", mode = "function")) {
         return(compute_beta_error_cpp(beta_est, beta_true))
-      } else if (exists("compute_beta_error_cpp", where = "package:scadLLA", mode = "function")) {
-        return(get("compute_beta_error_cpp", envir = asNamespace("scadLLA"))(beta_est, beta_true))
+      } else if (exists("compute_beta_error_cpp", where = "package:Scad", mode = "function")) {
+        return(get("compute_beta_error_cpp", envir = asNamespace("Scad"))(beta_est, beta_true))
       }
     }, error = function(e) {
       # Fall back to R version
@@ -286,8 +286,8 @@ compute_prediction_mse <- function(beta_est, X_list, y_list) {
     tryCatch({
       if (exists("compute_prediction_mse_cpp", mode = "function")) {
         return(compute_prediction_mse_cpp(beta_est, X_list, y_list))
-      } else if (exists("compute_prediction_mse_cpp", where = "package:scadLLA", mode = "function")) {
-        return(get("compute_prediction_mse_cpp", envir = asNamespace("scadLLA"))(beta_est, X_list, y_list))
+      } else if (exists("compute_prediction_mse_cpp", where = "package:Scad", mode = "function")) {
+        return(get("compute_prediction_mse_cpp", envir = asNamespace("Scad"))(beta_est, X_list, y_list))
       }
     }, error = function(e) {
       # Fall back to R version
@@ -316,8 +316,8 @@ compute_covariance_error <- function(beta_est, X_list, beta_true, sigma, rho_eps
     tryCatch({
       if (exists("compute_covariance_error_cpp", mode = "function")) {
         return(compute_covariance_error_cpp(beta_est, X_list, beta_true, sigma, rho_eps))
-      } else if (exists("compute_covariance_error_cpp", where = "package:scadLLA", mode = "function")) {
-        return(get("compute_covariance_error_cpp", envir = asNamespace("scadLLA"))(
+      } else if (exists("compute_covariance_error_cpp", where = "package:Scad", mode = "function")) {
+        return(get("compute_covariance_error_cpp", envir = asNamespace("Scad"))(
           beta_est, X_list, beta_true, sigma, rho_eps))
       }
     }, error = function(e) {
@@ -486,8 +486,8 @@ compute_mv_return <- function(beta_est, X_list, y_list, sigma, rho_eps) {
     tryCatch({
       if (exists("compute_mv_return_cpp", mode = "function")) {
         return(compute_mv_return_cpp(beta_est, X_list, y_list, sigma, rho_eps))
-      } else if (exists("compute_mv_return_cpp", where = "package:scadLLA", mode = "function")) {
-        return(get("compute_mv_return_cpp", envir = asNamespace("scadLLA"))(
+      } else if (exists("compute_mv_return_cpp", where = "package:Scad", mode = "function")) {
+        return(get("compute_mv_return_cpp", envir = asNamespace("Scad"))(
           beta_est, X_list, y_list, sigma, rho_eps))
       }
     }, error = function(e) {

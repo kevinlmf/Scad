@@ -1,4 +1,4 @@
-Package: scadLLA
+Package: Scad
 Title: SCAD Penalized Regression using LQA and Improved Algorithms
 Version: 0.1.0
 Authors@R: 

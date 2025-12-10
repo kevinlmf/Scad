@@ -37,7 +37,7 @@ $$p'_\lambda(\theta) = \begin{cases}
 The standard LQA algorithm approximates the SCAD penalty locally using a quadratic function and solves a sequence of weighted Ridge regression problems:
 
 ```{r standard-lqa}
-library(scadLLA)
+library(Scad)
 
 # Generate example data
 set.seed(123)
@@ -155,7 +155,7 @@ cat("L2 error:", round(sqrt(sum((fit_hd$beta - beta_true)^2)), 4), "\n")
 
 ## Conclusion
 
-The `scadLLA` package (implementing LQA) provides:
+The `Scad` package (implementing LQA) provides:
 
 1. **Standard LQA**: Baseline method using weighted Ridge.
 2. **Improved LQA**: Stabilized method using QR/SVD and adaptive ridge, recommended for high-dimensional or correlated data.

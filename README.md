@@ -1,7 +1,7 @@
-# ScadLLA: Stabilized SCAD Penalized Regression for High-Dimensional Factor Models
+# Scad: Stabilized SCAD Penalized Regression for High-Dimensional Factor Models
 
 
-The **scadLLA** package implements SCAD (Smoothly Clipped Absolute Deviation) penalized regression for **high-dimensional estimation**, focused on **factor-based portfolio construction**. It includes both classical **Local Quadratic Approximation (LQA)** and an enhanced **Stabilized LQA** using QR/SVD solvers, sparse warm starts, and hard-thresholding. The package also features **Dynamic SCAD** for time-varying coefficient regression with temporal smoothness constraints.
+The **Scad** package implements SCAD (Smoothly Clipped Absolute Deviation) penalized regression for **high-dimensional estimation**, focused on **factor-based portfolio construction**. It includes both classical **Local Quadratic Approximation (LQA)** and an enhanced **Stabilized LQA** using QR/SVD solvers, sparse warm starts, and hard-thresholding. The package also features **Dynamic SCAD** for time-varying coefficient regression with temporal smoothness constraints.
 
 ---
 ## Introduction and Motivation
@@ -311,7 +311,7 @@ You can install the development version from [GitHub](https://github.com/) with:
 
 ```r
 # install.packages("devtools")
-devtools::install_github("kevinlmf/scadLLA")
+devtools::install_github("kevinlmf/Scad")
 ```
 
 Or install from source:
@@ -321,7 +321,7 @@ Or install from source:
 # R CMD build .
 
 # Then install
-install.packages("scadLLA_0.1.0.tar.gz", repos = NULL, type = "source")
+install.packages("Scad_0.1.0.tar.gz", repos = NULL, type = "source")
 ```
 
 
@@ -342,7 +342,7 @@ install.packages("scadLLA_0.1.0.tar.gz", repos = NULL, type = "source")
 The package includes C++ code for performance-critical functions. After installation, Rcpp functions are automatically available. To verify:
 
 ```r
-library(scadLLA)
+library(Scad)
 
 # Check if Rcpp functions are available
 exists("solve_dynamic_lqa_admm_cpp", mode = "function")  # Should return TRUE
@@ -362,14 +362,14 @@ Rscript -e 'Rcpp::compileAttributes()'
 R CMD build .
 
 # Step 3: Install the package
-R CMD INSTALL scadLLA_0.1.0.tar.gz
+R CMD INSTALL Scad_0.1.0.tar.gz
 ```
 
 #### Method 2: Using devtools (Easier, recommended)
 
 ```r
 # From R console, navigate to package directory or use full path
-devtools::install("path/to/scadLLA", reload = TRUE)
+devtools::install("path/to/Scad", reload = TRUE)
 ```
 
 This automatically handles Rcpp compilation and installation.
@@ -379,7 +379,7 @@ This automatically handles Rcpp compilation and installation.
 After installation, verify Rcpp functions work:
 
 ```r
-library(scadLLA)
+library(Scad)
 
 # Test a function
 test_result <- generate_time_series_data_cpp(10, 5, 3, 0.5, 0.3, 1.0)
@@ -390,7 +390,7 @@ test_result <- generate_time_series_data_cpp(10, 5, 3, 0.5, 0.3, 1.0)
 The package includes C++ code for performance-critical functions. After installation, Rcpp functions are automatically available. To verify:
 
 ```r
-library(scadLLA)
+library(Scad)
 
 # Check if Rcpp functions are available
 exists("solve_dynamic_lqa_admm_cpp", mode = "function")  # Should return TRUE
@@ -604,8 +604,8 @@ MV return instability is expected due to:
 If you use this package in your research, please cite:
 
 ```bibtex
-@software{scadLLA,
-  title = {scadLLA: SCAD Penalized Regression with LQA and Dynamic Models},
+@software{Scad,
+  title = {Scad: SCAD Penalized Regression with LQA and Dynamic Models},
   author = {Long, Mengfan},
   year = {2025},
   url = {https://github.com/kevinlmf/scadLLA}

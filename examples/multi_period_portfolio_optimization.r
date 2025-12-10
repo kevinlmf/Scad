@@ -15,7 +15,7 @@
 # - Leverages Dynamic SCAD's temporal smoothness
 # ============================================================================
 
-library(scadLLA)
+library(Scad)
 library(glmnet)
 library(MASS)
 

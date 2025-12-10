@@ -308,7 +308,7 @@ dynamic_scad <- function(y_list, X_list, lambda, tau = 0.1, a = 3.7,
       if (requireNamespace("Rcpp", quietly = TRUE)) {
         # Try to call Rcpp function
         test_call <- tryCatch({
-          get("solve_dynamic_lqa_admm_cpp", envir = asNamespace("scadLLA"), inherits = FALSE)
+          get("solve_dynamic_lqa_admm_cpp", envir = asNamespace("Scad"), inherits = FALSE)
           TRUE
         }, error = function(e) FALSE)
         test_call

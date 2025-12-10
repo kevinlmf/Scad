@@ -2,38 +2,38 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 soft_threshold_cpp <- function(x, lambda) {
-    .Call(`_scadLLA_soft_threshold_cpp`, x, lambda)
+    .Call(`_Scad_soft_threshold_cpp`, x, lambda)
 }
 
 solve_dynamic_lqa_admm_cpp <- function(y_list, X_list, w_mat, lambda, tau, rho, max_iter, tol) {
-    .Call(`_scadLLA_solve_dynamic_lqa_admm_cpp`, y_list, X_list, w_mat, lambda, tau, rho, max_iter, tol)
+    .Call(`_Scad_solve_dynamic_lqa_admm_cpp`, y_list, X_list, w_mat, lambda, tau, rho, max_iter, tol)
 }
 
 generate_X_cpp <- function(n, p, rho) {
-    .Call(`_scadLLA_generate_X_cpp`, n, p, rho)
+    .Call(`_Scad_generate_X_cpp`, n, p, rho)
 }
 
 generate_epsilon_cpp <- function(n, sigma, rho_eps) {
-    .Call(`_scadLLA_generate_epsilon_cpp`, n, sigma, rho_eps)
+    .Call(`_Scad_generate_epsilon_cpp`, n, sigma, rho_eps)
 }
 
 compute_beta_error_cpp <- function(beta_est, beta_true) {
-    .Call(`_scadLLA_compute_beta_error_cpp`, beta_est, beta_true)
+    .Call(`_Scad_compute_beta_error_cpp`, beta_est, beta_true)
 }
 
 compute_prediction_mse_cpp <- function(beta_est, X_list, y_list) {
-    .Call(`_scadLLA_compute_prediction_mse_cpp`, beta_est, X_list, y_list)
+    .Call(`_Scad_compute_prediction_mse_cpp`, beta_est, X_list, y_list)
 }
 
 compute_covariance_error_cpp <- function(beta_est, X_list, beta_true, sigma, rho_eps) {
-    .Call(`_scadLLA_compute_covariance_error_cpp`, beta_est, X_list, beta_true, sigma, rho_eps)
+    .Call(`_Scad_compute_covariance_error_cpp`, beta_est, X_list, beta_true, sigma, rho_eps)
 }
 
 compute_mv_return_cpp <- function(beta_est, X_list, y_list, sigma, rho_eps) {
-    .Call(`_scadLLA_compute_mv_return_cpp`, beta_est, X_list, y_list, sigma, rho_eps)
+    .Call(`_Scad_compute_mv_return_cpp`, beta_est, X_list, y_list, sigma, rho_eps)
 }
 
 generate_time_series_data_cpp <- function(T_periods, n_per_period, p, rho, rho_eps, sigma) {
-    .Call(`_scadLLA_generate_time_series_data_cpp`, T_periods, n_per_period, p, rho, rho_eps, sigma)
+    .Call(`_Scad_generate_time_series_data_cpp`, T_periods, n_per_period, p, rho, rho_eps, sigma)
 }
 

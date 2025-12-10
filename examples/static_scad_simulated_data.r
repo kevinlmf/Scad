@@ -19,7 +19,7 @@
 #' @author Mengfan Long
 #' @date 2025
 
-library(scadLLA)
+library(Scad)
 library(glmnet)
 
 # Force output to console

@@ -13,7 +13,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // soft_threshold_cpp
 arma::vec soft_threshold_cpp(const arma::vec& x, double lambda);
-RcppExport SEXP _scadLLA_soft_threshold_cpp(SEXP xSEXP, SEXP lambdaSEXP) {
+RcppExport SEXP _Scad_soft_threshold_cpp(SEXP xSEXP, SEXP lambdaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -25,7 +25,7 @@ END_RCPP
 }
 // solve_dynamic_lqa_admm_cpp
 arma::mat solve_dynamic_lqa_admm_cpp(const List& y_list, const List& X_list, const arma::mat& w_mat, double lambda, double tau, double rho, int max_iter, double tol);
-RcppExport SEXP _scadLLA_solve_dynamic_lqa_admm_cpp(SEXP y_listSEXP, SEXP X_listSEXP, SEXP w_matSEXP, SEXP lambdaSEXP, SEXP tauSEXP, SEXP rhoSEXP, SEXP max_iterSEXP, SEXP tolSEXP) {
+RcppExport SEXP _Scad_solve_dynamic_lqa_admm_cpp(SEXP y_listSEXP, SEXP X_listSEXP, SEXP w_matSEXP, SEXP lambdaSEXP, SEXP tauSEXP, SEXP rhoSEXP, SEXP max_iterSEXP, SEXP tolSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -43,7 +43,7 @@ END_RCPP
 }
 // generate_X_cpp
 arma::mat generate_X_cpp(int n, int p, double rho);
-RcppExport SEXP _scadLLA_generate_X_cpp(SEXP nSEXP, SEXP pSEXP, SEXP rhoSEXP) {
+RcppExport SEXP _Scad_generate_X_cpp(SEXP nSEXP, SEXP pSEXP, SEXP rhoSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -56,7 +56,7 @@ END_RCPP
 }
 // generate_epsilon_cpp
 arma::vec generate_epsilon_cpp(int n, double sigma, double rho_eps);
-RcppExport SEXP _scadLLA_generate_epsilon_cpp(SEXP nSEXP, SEXP sigmaSEXP, SEXP rho_epsSEXP) {
+RcppExport SEXP _Scad_generate_epsilon_cpp(SEXP nSEXP, SEXP sigmaSEXP, SEXP rho_epsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -69,7 +69,7 @@ END_RCPP
 }
 // compute_beta_error_cpp
 double compute_beta_error_cpp(const arma::mat& beta_est, const arma::mat& beta_true);
-RcppExport SEXP _scadLLA_compute_beta_error_cpp(SEXP beta_estSEXP, SEXP beta_trueSEXP) {
+RcppExport SEXP _Scad_compute_beta_error_cpp(SEXP beta_estSEXP, SEXP beta_trueSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -81,7 +81,7 @@ END_RCPP
 }
 // compute_prediction_mse_cpp
 double compute_prediction_mse_cpp(const arma::mat& beta_est, const List& X_list, const List& y_list);
-RcppExport SEXP _scadLLA_compute_prediction_mse_cpp(SEXP beta_estSEXP, SEXP X_listSEXP, SEXP y_listSEXP) {
+RcppExport SEXP _Scad_compute_prediction_mse_cpp(SEXP beta_estSEXP, SEXP X_listSEXP, SEXP y_listSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -94,7 +94,7 @@ END_RCPP
 }
 // compute_covariance_error_cpp
 double compute_covariance_error_cpp(const arma::mat& beta_est, const List& X_list, const arma::mat& beta_true, double sigma, double rho_eps);
-RcppExport SEXP _scadLLA_compute_covariance_error_cpp(SEXP beta_estSEXP, SEXP X_listSEXP, SEXP beta_trueSEXP, SEXP sigmaSEXP, SEXP rho_epsSEXP) {
+RcppExport SEXP _Scad_compute_covariance_error_cpp(SEXP beta_estSEXP, SEXP X_listSEXP, SEXP beta_trueSEXP, SEXP sigmaSEXP, SEXP rho_epsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -109,7 +109,7 @@ END_RCPP
 }
 // compute_mv_return_cpp
 double compute_mv_return_cpp(const arma::mat& beta_est, const List& X_list, const List& y_list, double sigma, double rho_eps);
-RcppExport SEXP _scadLLA_compute_mv_return_cpp(SEXP beta_estSEXP, SEXP X_listSEXP, SEXP y_listSEXP, SEXP sigmaSEXP, SEXP rho_epsSEXP) {
+RcppExport SEXP _Scad_compute_mv_return_cpp(SEXP beta_estSEXP, SEXP X_listSEXP, SEXP y_listSEXP, SEXP sigmaSEXP, SEXP rho_epsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -124,7 +124,7 @@ END_RCPP
 }
 // generate_time_series_data_cpp
 List generate_time_series_data_cpp(int T_periods, int n_per_period, int p, double rho, double rho_eps, double sigma);
-RcppExport SEXP _scadLLA_generate_time_series_data_cpp(SEXP T_periodsSEXP, SEXP n_per_periodSEXP, SEXP pSEXP, SEXP rhoSEXP, SEXP rho_epsSEXP, SEXP sigmaSEXP) {
+RcppExport SEXP _Scad_generate_time_series_data_cpp(SEXP T_periodsSEXP, SEXP n_per_periodSEXP, SEXP pSEXP, SEXP rhoSEXP, SEXP rho_epsSEXP, SEXP sigmaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -140,19 +140,19 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_scadLLA_soft_threshold_cpp", (DL_FUNC) &_scadLLA_soft_threshold_cpp, 2},
-    {"_scadLLA_solve_dynamic_lqa_admm_cpp", (DL_FUNC) &_scadLLA_solve_dynamic_lqa_admm_cpp, 8},
-    {"_scadLLA_generate_X_cpp", (DL_FUNC) &_scadLLA_generate_X_cpp, 3},
-    {"_scadLLA_generate_epsilon_cpp", (DL_FUNC) &_scadLLA_generate_epsilon_cpp, 3},
-    {"_scadLLA_compute_beta_error_cpp", (DL_FUNC) &_scadLLA_compute_beta_error_cpp, 2},
-    {"_scadLLA_compute_prediction_mse_cpp", (DL_FUNC) &_scadLLA_compute_prediction_mse_cpp, 3},
-    {"_scadLLA_compute_covariance_error_cpp", (DL_FUNC) &_scadLLA_compute_covariance_error_cpp, 5},
-    {"_scadLLA_compute_mv_return_cpp", (DL_FUNC) &_scadLLA_compute_mv_return_cpp, 5},
-    {"_scadLLA_generate_time_series_data_cpp", (DL_FUNC) &_scadLLA_generate_time_series_data_cpp, 6},
+    {"_Scad_soft_threshold_cpp", (DL_FUNC) &_Scad_soft_threshold_cpp, 2},
+    {"_Scad_solve_dynamic_lqa_admm_cpp", (DL_FUNC) &_Scad_solve_dynamic_lqa_admm_cpp, 8},
+    {"_Scad_generate_X_cpp", (DL_FUNC) &_Scad_generate_X_cpp, 3},
+    {"_Scad_generate_epsilon_cpp", (DL_FUNC) &_Scad_generate_epsilon_cpp, 3},
+    {"_Scad_compute_beta_error_cpp", (DL_FUNC) &_Scad_compute_beta_error_cpp, 2},
+    {"_Scad_compute_prediction_mse_cpp", (DL_FUNC) &_Scad_compute_prediction_mse_cpp, 3},
+    {"_Scad_compute_covariance_error_cpp", (DL_FUNC) &_Scad_compute_covariance_error_cpp, 5},
+    {"_Scad_compute_mv_return_cpp", (DL_FUNC) &_Scad_compute_mv_return_cpp, 5},
+    {"_Scad_generate_time_series_data_cpp", (DL_FUNC) &_Scad_generate_time_series_data_cpp, 6},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_scadLLA(DllInfo *dll) {
+RcppExport void R_init_Scad(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

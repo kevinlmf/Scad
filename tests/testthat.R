@@ -1,4 +1,4 @@
 library(testthat)
-library(scadLLA)
+library(Scad)
 
-test_check("scadLLA")
+test_check("Scad")

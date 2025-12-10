@@ -1,6 +1,6 @@
-# GenAI Tutorial for scadLLA Package
+# GenAI Tutorial for Scad Package
 
-This document details how Generative AI tools were utilized to assist in the development of the `scadLLA` package by following the "GenAI-assisted coding" workflow.
+This document details how Generative AI tools were utilized to assist in the development of the `Scad` package by following the "GenAI-assisted coding" workflow.
 
 ## 1. AI Tools Used
 
@@ -14,7 +14,7 @@ This document details how Generative AI tools were utilized to assist in the dev
 The initial request to the AI involved analyzing the existing directory and generating the missing standard R package files.
 
 **Prompt Used:**
-> "Here are the requirements for my R package `scadLLA`... I need to include a complete R package structure, correct DESCRIPTION, README, and GenAI tutorial. Please help me generate the missing content based on the existing `R/` files."
+> "Here are the requirements for my R package `Scad`... I need to include a complete R package structure, correct DESCRIPTION, README, and GenAI tutorial. Please help me generate the missing content based on the existing `R/` files."
 
 **AI Response Strategy:**
 1.  **Exploration**: The AI first listed the directory contents to understand what was already implemented (`R/lqa_scad.R`, `R/lqa_scad_improved.R`).

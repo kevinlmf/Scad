@@ -26,7 +26,7 @@
 # Step 2b: Mean-Variance Portfolio Performance (Return, Volatility, Sharpe)
 # ============================================================================
 
-library(scadLLA)
+library(Scad)
 library(glmnet)
 library(MASS)
 
@@ -45,8 +45,8 @@ if (requireNamespace("Rcpp", quietly = TRUE)) {
     # Try to actually call a function from package namespace (not global env)
     test_beta <- matrix(1:4, 2, 2)
     # Use package namespace explicitly to avoid global env masking
-    if (exists("compute_beta_error_cpp", where = asNamespace("scadLLA"), mode = "function")) {
-      test_result <- get("compute_beta_error_cpp", envir = asNamespace("scadLLA"))(test_beta, test_beta)
+    if (exists("compute_beta_error_cpp", where = asNamespace("Scad"), mode = "function")) {
+      test_result <- get("compute_beta_error_cpp", envir = asNamespace("Scad"))(test_beta, test_beta)
       if (is.finite(test_result)) {
         use_rcpp <- TRUE
         cat("✓ Rcpp 加速版本可用，将使用 C++ 实现（快 5-20 倍）\n\n")
