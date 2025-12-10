@@ -1,0 +1,5 @@
+# Makevars for RcppArmadillo
+CXX_STD = CXX11
+PKG_LIBS = $(shell $(R_HOME)/bin/Rscript -e "RcppArmadillo:::LdFlags()")
+PKG_CPPFLAGS = $(shell $(R_HOME)/bin/Rscript -e "RcppArmadillo:::CxxFlags()")
+

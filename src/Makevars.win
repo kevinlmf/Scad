@@ -1,0 +1,5 @@
+# Makevars.win for RcppArmadillo on Windows
+CXX_STD = CXX11
+PKG_LIBS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "RcppArmadillo:::LdFlags()")
+PKG_CPPFLAGS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "RcppArmadillo:::CxxFlags()")
+

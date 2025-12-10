@@ -53,23 +53,13 @@ save_results <- FALSE  # Set to TRUE to save results to files
 # 3. Numerically unstable scenarios
 #
 # Current configurations include:
-# - Standard: n > p (baseline)
-# - High-dim: n > p but larger scale
-# - Ultra high-dim: p > n (where Improved excels)
-# - Equal-dim: p ≈ n (boundary case)
+# - Standard: n > p (baseline) - n=100, p=50
+# - Equal-dim: p ≈ n (boundary case) - n=100, p=100
+# - Very high-dim: p > n (challenging case) - n=60, p=120
 configurations <- list(
   # Standard case: n > p (baseline, Improved advantage minimal)
   list(n = 100, p = 50, rho = 0.5, sigma = 1.0, rho_eps = 0.3, 
        name = "Standard (n=100, p=50, ρ_ε=0.3)", weak_signal = FALSE),
-  
-  # High-dim case: n > p but larger (Improved may show slight advantage)
-  list(n = 200, p = 100, rho = 0.8, sigma = 1.0, rho_eps = 0.5,
-       name = "High-dim (n=200, p=100, ρ_ε=0.5)", weak_signal = FALSE),
-  
-  # ⭐ KEY: Ultra high-dim case (p > n) - This is where Improved excels!
-  # SCAD Improved uses QR/SVD decomposition for stability
-  list(n = 50, p = 100, rho = 0.7, sigma = 1.0, rho_eps = 0.3,
-       name = "Ultra high-dim (n=50, p=100, ρ_ε=0.3) ⭐", weak_signal = FALSE),
   
   # Equal dimension case (p ≈ n) - Boundary where Improved shows advantage
   list(n = 100, p = 100, rho = 0.8, sigma = 1.0, rho_eps = 0.4,

@@ -7,7 +7,9 @@ Author: Mengfan Long [aut, cre]
 Maintainer: Mengfan Long <mengfanl@umich.edu>
 Description: Implements SCAD (Smoothly Clipped Absolute Deviation) penalized 
     regression using Local Quadratic Approximation (LQA) and improved stabilized 
-    algorithms (LQA with QR/SVD decomposition and adaptive ridge).
+    algorithms (LQA with QR/SVD decomposition and adaptive ridge). Also includes 
+    Dynamic SCAD model for time-varying coefficient regression with SCAD sparsity 
+    penalty and temporal smoothness constraint.
 License: MIT
 Encoding: UTF-8
 LazyData: true
@@ -15,7 +17,11 @@ RoxygenNote: 7.3.3
 Imports: 
     glmnet,
     stats,
-    graphics
+    graphics,
+    Rcpp (>= 1.0.0)
+LinkingTo: 
+    Rcpp,
+    RcppArmadillo
 Suggests: 
     knitr,
     rmarkdown,

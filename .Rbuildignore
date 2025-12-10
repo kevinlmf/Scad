@@ -1,8 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.git$
-^\.gitignore$
-^\.Rhistory$
-
-
-
+^src/.*\.o$
+^src/.*\.so$
+^src/.*\.dll$

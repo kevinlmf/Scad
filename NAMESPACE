@@ -1,7 +1,6 @@
-export(lqa_scad)
-export(lqa_scad_improved)
+exportPattern("^[[:alpha:]]+")
 import(glmnet)
 import(stats)
 import(graphics)
-
-
+import(Rcpp)
+useDynLib(scadLLA, .registration = TRUE)
