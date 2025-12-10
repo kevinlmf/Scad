@@ -1,0 +1,23 @@
+Package: scadLLA
+Title: SCAD Penalized Regression using LQA and Improved Algorithms
+Version: 0.1.0
+Authors@R: 
+    person("Mengfan", "Long", email = "mengfanl@umich.edu", role = c("aut", "cre"))
+Author: Mengfan Long [aut, cre]
+Maintainer: Mengfan Long <mengfanl@umich.edu>
+Description: Implements SCAD (Smoothly Clipped Absolute Deviation) penalized 
+    regression using Local Quadratic Approximation (LQA) and improved stabilized 
+    algorithms (LQA with QR/SVD decomposition and adaptive ridge).
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Imports: 
+    glmnet,
+    stats,
+    graphics
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr

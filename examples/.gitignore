@@ -1,0 +1,12 @@
+# Results folder
+results/
+
+# Data files
+*.RData
+*.csv
+
+# Temporary files
+*.log
+*.tmp
+
+

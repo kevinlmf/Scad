@@ -1,0 +1,163 @@
+---
+title: "SCAD Penalized Regression via Local Quadratic Approximation"
+author: "Mengfan Long"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SCAD Penalized Regression via Local Quadratic Approximation}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 5
+)
+```
+
+## Introduction
+
+This package provides implementations of SCAD (Smoothly Clipped Absolute Deviation) penalized regression using Local Quadratic Approximation (LQA) methods. SCAD is a non-convex penalty function that overcomes the bias limitations of LASSO while maintaining sparsity.
+
+## SCAD Penalty
+
+The SCAD penalty is defined through its derivative:
+
+$$p'_\lambda(\theta) = \begin{cases}
+\lambda, & |\theta| \leq \lambda \\
+\frac{a\lambda - |\theta|}{a-1}, & \lambda < |\theta| \leq a\lambda \\
+0, & |\theta| > a\lambda
+\end{cases}$$
+
+## Standard LQA
+
+The standard LQA algorithm approximates the SCAD penalty locally using a quadratic function and solves a sequence of weighted Ridge regression problems:
+
+```{r standard-lqa}
+library(scadLLA)
+
+# Generate example data
+set.seed(123)
+n <- 100
+p <- 50
+X <- matrix(rnorm(n * p), n, p)
+beta_true <- c(3, 3, 2, 1.5, 1, rep(0, p - 5))
+y <- X %*% beta_true + rnorm(n, sd = 0.5)
+
+# Fit SCAD using standard LQA
+fit_lqa <- lqa_scad(y, X, lambda = 0.5, a = 3.7)
+
+# Check results
+cat("Converged:", fit_lqa$converged, "\n")
+cat("Iterations:", fit_lqa$iterations, "\n")
+cat("Non-zero coefficients:", sum(fit_lqa$beta != 0), "\n")
+cat("True non-zero:", sum(beta_true != 0), "\n")
+```
+
+## Improved LQA with Decompositions
+
+The improved LQA implementation (`lqa_scad_improved`) adds numerical stability using QR or SVD decompositions and an adaptive ridge term.
+
+### QR Decomposition
+The QR-based version provides numerically stable solutions for the weighted least squares step:
+
+```{r qr-version}
+# Fit SCAD using QR decomposition
+fit_qr <- lqa_scad_improved(y, X, lambda = 0.5, a = 3.7, decomposition = "qr")
+
+cat("Converged:", fit_qr$converged, "\n")
+cat("Iterations:", fit_qr$iterations, "\n")
+cat("Non-zero coefficients:", sum(fit_qr$beta != 0), "\n")
+```
+
+### SVD Decomposition
+The SVD-based version handles rank-deficiency and multicollinearity:
+
+```{r svd-version}
+# Fit SCAD using SVD decomposition
+fit_svd <- lqa_scad_improved(y, X, lambda = 0.5, a = 3.7, decomposition = "svd")
+
+cat("Converged:", fit_svd$converged, "\n")
+cat("Iterations:", fit_svd$iterations, "\n")
+cat("Non-zero coefficients:", sum(fit_svd$beta != 0), "\n")
+```
+
+## Comparison
+
+Let's compare the different methods:
+
+```{r comparison}
+# Compare estimation accuracy
+methods <- c("Standard LQA", "Improved (QR)", "Improved (SVD)")
+beta_estimates <- list(
+  fit_lqa$beta,
+  fit_qr$beta,
+  fit_svd$beta
+)
+
+# Compute L2 error
+l2_errors <- sapply(beta_estimates, function(beta) {
+  sqrt(sum((beta - beta_true)^2))
+})
+
+# Compute sparsity recovery
+sparsity <- sapply(beta_estimates, function(beta) {
+  sum(beta != 0)
+})
+
+# Create comparison table
+comparison <- data.frame(
+  Method = methods,
+  L2_Error = round(l2_errors, 4),
+  Non_Zero = sparsity,
+  Iterations = c(
+    fit_lqa$iterations,
+    fit_qr$iterations,
+    fit_svd$iterations
+  )
+)
+
+print(comparison)
+```
+
+## High-Dimensional Example
+
+Example with high-dimensional data matrix:
+
+```{r high-dim}
+# High-dimensional setting
+set.seed(456)
+n <- 200
+p <- 100
+X <- matrix(rnorm(n * p), n, p)
+# Add correlation structure
+cor_mat <- 0.5^abs(outer(1:p, 1:p, "-"))
+X <- X %*% chol(cor_mat)
+beta_true <- c(3, 3, 2, 1.5, 1, rep(0, p - 5))
+y <- X %*% beta_true + rnorm(n, sd = 1)
+
+# Fit with improved method (SVD is robust for high dimensions)
+fit_hd <- lqa_scad_improved(
+  y, X, lambda = 0.8, a = 3.7,
+  decomposition = "svd"
+)
+
+cat("High-dimensional results:\n")
+cat("Converged:", fit_hd$converged, "\n")
+cat("Iterations:", fit_hd$iterations, "\n")
+cat("Non-zero coefficients:", sum(fit_hd$beta != 0), "\n")
+cat("True non-zero:", sum(beta_true != 0), "\n")
+cat("L2 error:", round(sqrt(sum((fit_hd$beta - beta_true)^2)), 4), "\n")
+```
+
+## Conclusion
+
+The `scadLLA` package (implementing LQA) provides:
+
+1. **Standard LQA**: Baseline method using weighted Ridge.
+2. **Improved LQA**: Stabilized method using QR/SVD and adaptive ridge, recommended for high-dimensional or correlated data.
+
+
