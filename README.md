@@ -208,7 +208,7 @@ If you use this package in your research, please cite:
 This package was developed with the assistance of Generative AI tools. 
 See the full **[GenAI Tutorial](AI%20tutorial/GenAI_Tutorial.md)** for details on the development process, p**_)**
 
-You may also refer to the accompanying PDF:  
+You may also refer to the accompanying PDF for a more detailed dsecription of this package:  
 📄 **[Biostats 615 Notes (PDF)](AI%20tutorial/Biostats_615.pdf)**
 
 ---
