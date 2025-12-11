@@ -1,5 +1,3 @@
-# Biostats 615: Advanced Topics in Statistical Learning
-
 ## 1. Problems of LASSO in High-Dimensional Data Settings
 
 **AI Contribution**
@@ -78,5 +76,4 @@ AI played an important role in designing and executing the real-data analysis fo
 ![Figure 11: Real Data Analysis - Part 1](11.png)
 
 ![Figure 12: Real Data Analysis - Part 2](12.png)
-
 
