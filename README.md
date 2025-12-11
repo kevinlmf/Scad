@@ -623,6 +623,7 @@ If you use this package in your research, please cite:
 ## GenAI Tutorial
 
 This package was developed with the assistance of Generative AI tools. 
-See the full **[GenAI Tutorial](GenAI_Tutorial.md)** for details on the development process, prompts used, and workflow.
+See the full **[GenAI Tutorial](AI%20tutorial/GenAI_Tutorial.md)** for details on the development process, p**_)**
+
 
 ---
